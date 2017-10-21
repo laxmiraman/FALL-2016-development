@@ -1,0 +1,69 @@
+<header></header>
+
+<div class="general-padding" ng-if="vm.authorized == false">
+  <h1>You are not authorized to view this page.</h1>
+</div>
+
+<div class="general-padding" ng-if="vm.authorized == true">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>{{vm.headerText}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="selectedYear">Year</label>
+        <select ng-options="year for year in vm.years" ng-model="vm.selectedYear" id="selectedYear"></select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <button ng-click="vm.getGearTrend()" class="btn btn-default" type="submit">Generate Report</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table id="gear_trend_table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>January</th>
+              <th>February</th>
+              <th>March</th>
+              <th>April</th>
+              <th>May</th>
+              <th>June</th>
+              <th>July</th>
+              <th>August</th>
+              <th>September</th>
+              <th>October</th>
+              <th>November</th>
+              <th>December</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="gear in vm.gearTrendList">
+              <td>{{gear.name}}</td>
+              <td>{{gear.January}}</td>
+              <td>{{gear.February}}</td>
+              <td>{{gear.March}}</td>
+              <td>{{gear.April}}</td>
+              <td>{{gear.May}}</td>
+              <td>{{gear.June}}</td>
+              <td>{{gear.July}}</td>
+              <td>{{gear.August}}</td>
+              <td>{{gear.September}}</td>
+              <td>{{gear.October}}</td>
+              <td>{{gear.November}}</td>
+              <td>{{gear.December}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

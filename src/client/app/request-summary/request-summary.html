@@ -1,0 +1,70 @@
+<header></header>
+<div class="general-padding">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>{{vm.headerText}}</h1>
+    </div>
+  </div>
+  <div ng-if="vm.gearRequestsPage">
+    <div class="row">
+      <div class="col-md-12">
+        <table id="gear_requests_table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Request Id</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Approval Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="request in vm.gearRequests track by $index">
+              <td>
+                <a href ng-click="vm.getRequestDetails(request.request_id)">{{request.request_id}}</a>
+              </td>
+              <td>{{request.start_date.slice(0,10)}}</td>
+              <td>{{request.end_date.slice(0,10)}}</td>
+              <td>{{request.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div ng-if="vm.requestDetailPage">
+    <div class="row">
+      <div class="col-md-3">
+        <label>Start Date</label>
+        <span>{{vm.startDate}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>End Date</label>
+        <span>{{vm.endDate}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table id="gear_request_table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Gear Type</th>
+              <th>Size</th>
+              <th>Gender</th>
+              <th>Quantity Requested</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="requestDetail in vm.requestDetails track by $index">
+              <td>{{requestDetail.name}}</td>
+              <td>{{requestDetail.size}}</td>
+              <td>{{requestDetail.gender}}</td>
+              <td>{{requestDetail.quantity}}</td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+    </div>
+  </div>
+</div>

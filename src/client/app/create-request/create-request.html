@@ -1,0 +1,94 @@
+<header></header>
+
+<div class="general-padding">
+  <div class="row">
+    <div class="col-md-3" ng-if="vm.authorized">
+      <h1>{{vm.headerText}}</h1>
+    </div>
+  </div>
+
+  <div class="general-padding" ng-if="!vm.authorized">
+    <h1>You are not authorized to view this page.</h1>
+  </div>
+
+  <div ng-if="!vm.requestSuccessful && vm.needToCheckout && vm.authorized" class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="pickUpDate">Pickup Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.startDate" is-open="vm.startDatePopup.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" id="pickupDate"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.openStartPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="returnDate">Return Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.endDate" is-open="vm.endDatePopup.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" id="returnDate" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.openEndPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button ng-click="vm.findAvailableGear()" class="btn btn-default" type="submit" ng-disabled="!vm.validDates()">Search</button>
+    </div>
+  </div>
+
+  <div ng-if="!vm.needToCheckout" class="row">
+    <div class="col-md-3">
+      <label>Pickup Date: </label> {{vm.startDate.toISOString().substring(0,10)}}
+    </div>
+    <div class="col-md-3">
+      <label>Return Date: </label> {{vm.endDate.toISOString().substring(0,10)}}
+    </div>
+  </div>
+
+  <div ng-if="vm.gears.length > 0 && !vm.requestSuccessful">
+    <div class="row">
+      <div class="col-md-12">
+        <table id="gear_request_table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Gear Type</th>
+              <th>Size</th>
+              <th>Gender</th>
+              <th>Quantity Available</th>
+              <th>Quantity Requested</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="gear in vm.gears track by $index">
+              <td><a ui-sref="moreGearDetails({ gearID: {{gear.id}} })">{{gear.name}}</a></td>
+              <td>{{gear.size}}</td>
+              <td>{{gear.gender}}</td>
+              <td>{{gear.QuantityAvailable}}</td>
+              <td>
+                <input class="quantityInput" type="number" min= "0" ng-model="gear.quantity"/>
+                <span class="label label-danger validator"  ng-show="gear.quantity > {{gear.QuantityAvailable}}">Quantity too large!</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div ng-if="vm.needToCheckout" class="row">
+      <button id="proceedToCheckout" ng-click="vm.proceedToCheckout()" type="submit" class="btn btn-default" ng-disabled="vm.invalidRequest()">Proceed to Checkout</button>
+    </div>
+    <div ng-if="!vm.needToCheckout" class="row">
+      <button ng-click="vm.goBack()" type="submit" class="btn btn-default">Back</button>
+    </div>
+    <div ng-if="!vm.needToCheckout" class="row">
+      <button ng-click="vm.createRequest()" type="submit" class="btn btn-default">Submit Request</button>
+    </div>
+  </div>
+
+  <div ng-if="vm.requestSuccessful">
+    <p>You're request will be reviewed by a Gear Lending Library administrator for approval. Once your request is approved, you will be sent further instructions for pickup along with other details.</p>
+  </div>
+  
+</div>

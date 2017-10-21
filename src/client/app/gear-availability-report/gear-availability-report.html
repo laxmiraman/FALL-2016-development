@@ -1,0 +1,62 @@
+<header></header>
+
+<div class="general-padding">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>{{vm.headerText}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="pickUpDate">Start Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.startDate" is-open="vm.startDatePopup.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" id="pickUpDate" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.openStartPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="returnDate">End Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.endDate" is-open="vm.endDatePopup.opened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="vm.altInputFormats" id="returnDate" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.openEndPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button ng-click="vm.findAvailableGear()" class="btn btn-default" type="submit" ng-disabled="!vm.validDates()">Search</button>
+    </div>
+  </div>
+
+  
+  <div ng-if="vm.gears.length > 0 && !vm.requestSuccessful">
+    <div class="row">
+      <div class="col-md-12">
+        <table id="gear_request_table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Gear Type</th>
+              <th>Size</th>
+              <th>Gender</th>
+              <th>Quantity Available</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="gear in vm.gears track by $index">
+              <td><a ui-sref="moreGearDetails({ gearID: {{gear.id}} })">{{gear.name}}</a></td>
+              <td>{{gear.size}}</td>
+              <td>{{gear.gender}}</td>
+              <td>{{gear.QuantityAvailable}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

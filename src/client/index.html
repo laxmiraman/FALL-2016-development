@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" ng-app="wta" itemscope itemtype="http://schema.org/Article">
+    <head>
+        <style>
+            /* This helps the ng-show/ng-hide animations start at the right place. */
+            /* Since Angular has this but needs to load, this gives us the class early. */
+            
+            .ng-hide {
+                display: none!important;
+            }
+        </style>
+        <title>WTA Gear Lending Library</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <meta name="google-signin-client_id" content="680499437403-urd2nur4a6tghr8ok2pmsetuffu5323a.apps.googleusercontent.com">
+        <base href="/">
+        
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+        <link rel="stylesheet" href="/src/client/styles/app.css">
+        
+    </head>
+    <body>
+        
+        <div ui-view></div>
+
+        <!-- Google Platform Script -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+            
+        <!-- Bower Components -->
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        
+        <!-- Core Application JavaScript -->
+        <script src="/src/client/app/app.module.js"></script>
+        <script src="/src/client/app/blocks/exception/exception.module.js"></script>
+        <script src="/src/client/app/blocks/logger/logger.module.js"></script>
+        <script src="/src/client/app/blocks/router/router.module.js"></script>
+        <script src="/src/client/app/core/core.module.js"></script>
+        <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
+        <script src="/src/client/app/blocks/exception/exception.js"></script>
+        <script src="/src/client/app/blocks/logger/logger.js"></script>
+        <script src="/src/client/app/blocks/router/profile.service.js"></script>
+
+        <!-- Login Module -->
+        <script src="/src/client/app/login/login.module.js"></script>
+        <script src="/src/client/app/login/login.route.js"></script>
+        <script src="/src/client/app/login/login.controller.js"></script>
+
+        <!-- Rest of Routing Logic -->
+        <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
+        <script src="/src/client/app/core/config.js"></script>
+        <script src="/src/client/app/core/core.route.js"></script>
+
+        <!-- WTA Widgets -->
+        <script src="/src/client/app/widgets/widgets.module.js"></script>
+        <script src="/src/client/app/widgets/header/header.directive.js"></script>
+        <script src="/src/client/app/widgets/google-button/google-button.directive.js"></script>
+        
+        <!-- WTA API Module -->
+        <script src="/src/client/app/wta-api/wta-api.module.js"></script>
+        <script src="/src/client/app/wta-api/wta-api.service.js"></script>
+
+        <!-- Create Request Module -->
+        <script src="/src/client/app/create-request/create-request.module.js"></script>
+        <script src="/src/client/app/create-request/create-request.route.js"></script>
+        <script src="/src/client/app/create-request/create-request.controller.js"></script>
+    
+        <!-- Request Summary Module -->
+        <script src="/src/client/app/request-summary/request-summary.module.js"></script>
+        <script src="/src/client/app/request-summary/request-summary.route.js"></script>
+        <script src="/src/client/app/request-summary/request-summary.controller.js"></script>
+
+        <!-- Gear Availability Report Module -->
+        <script src="/src/client/app/gear-availability-report/gear-availability.module.js"></script>
+        <script src="/src/client/app/gear-availability-report/gear-availability.route.js"></script>
+        <script src="/src/client/app/gear-availability-report/gear-availability.controller.js"></script>
+       
+       <!-- Gear Inventory Module -->
+        <script src="/src/client/app/gear-inventory/gear-inventory.module.js"></script>
+        <script src="/src/client/app/gear-inventory/gear-inventory.route.js"></script>
+        <script src="/src/client/app/gear-inventory/gear-inventory.controller.js"></script>
+       
+        <!-- More Gear Details Module -->
+        <script src="/src/client/app/more-gear-details/more-gear-details.module.js"></script>
+        <script src="/src/client/app/more-gear-details/more-gear-details.route.js"></script>
+        <script src="/src/client/app/more-gear-details/more-gear-details.controller.js"></script>    
+
+        <!-- Manage Returns Module -->
+        <script src="/src/client/app/manage-returns/manage-returns.module.js"></script>
+        <script src="/src/client/app/manage-returns/manage-returns.route.js"></script>
+        <script src="/src/client/app/manage-returns/manage-returns.controller.js"></script>
+
+        <!-- View History Report Module -->
+        <script src="/src/client/app/view-history-report/view-history.module.js"></script>
+        <script src="/src/client/app/view-history-report/view-history.route.js"></script>
+        <script src="/src/client/app/view-history-report/view-history.controller.js"></script>
+
+        <!-- Approve Request Module -->
+        <script src="/src/client/app/approve-request/approve-request.module.js"></script>
+        <script src="/src/client/app/approve-request/approve-request.route.js"></script>
+        <script src="/src/client/app/approve-request/approve-request.controller.js"></script>
+
+        <!-- Gear Trend Module -->
+        <script src="/src/client/app/gear-trend/gear-trend.module.js"></script>
+        <script src="/src/client/app/gear-trend/gear-trend.route.js"></script>
+        <script src="/src/client/app/gear-trend/gear-trend.controller.js"></script>
+
+        <!-- Group Manager Module -->
+        <script src="/src/client/app/group-manager/group-manager.module.js"></script>
+        <script src="/src/client/app/group-manager/group-manager.route.js"></script>
+        <script src="/src/client/app/group-manager/group-manager.controller.js"></script>
+    </body>
+</html>

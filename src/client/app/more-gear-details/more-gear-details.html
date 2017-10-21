@@ -1,0 +1,18 @@
+<header></header>
+
+<body>
+    <div class="container-fluid">
+        <div class="im-centered">
+            <div class="row" ng-repeat="item in vm.gearItem" class="col-md-6">
+                <div class="col-md-3"><h1 ng-repeat="item in vm.gearItem">{{item.name}}:</h1><img class="img-responsive" src="{{item.image_url}}" class="img-thumbnail" alt="Men's Fleece'" width="304" height="236"></div>
+                <div class="col-md-3"><h3 ng-repeat="item in vm.gearItem">{{item.name}} Brand and Model Name</h3> {{item.description}}</div>
+            </div>
+        </div>
+        <div class="im-centered">
+            <div class="row" ng-repeat="item in vm.gearItem" class="col-md-6">
+                <div class="col-md-3"><h3>Care and Maintenance</h3> {{item.care_maintenance}}</div>
+                <div class="col-md-3"><h3>Sizing</h3> <img class="img-responsive" src="{{item.sizing_table}}" class="img-thumbnail" alt="Men's Fleece Sizing Table'"></div>
+            </div>
+        </div>
+    </div>
+</body>
