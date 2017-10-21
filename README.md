@@ -1,4 +1,4 @@
-# GLLS
+# GLLS - Inventory System
 Setup steps:
 
 1. Install MySQL
