@@ -1,4 +1,4 @@
-# FALL-2016
+# GLLS
 Setup steps:
 
 1. Install MySQL
